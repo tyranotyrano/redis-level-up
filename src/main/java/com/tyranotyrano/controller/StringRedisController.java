@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tyranotyrano.rqrs.CreateStringCacheRq;
+import com.tyranotyrano.rqrs.CreateStringCacheWithExpirationRq;
 import com.tyranotyrano.service.StringRedisService;
 
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,10 @@ public class StringRedisController {
     @PostMapping
     public void create(@RequestBody CreateStringCacheRq rq) {
         redisService.create(rq);
+    }
+
+    @PostMapping(path = "/expiration")
+    public void createWithExpiration(@RequestBody CreateStringCacheWithExpirationRq rq) {
+        redisService.createWithExpiration(rq);
     }
 }

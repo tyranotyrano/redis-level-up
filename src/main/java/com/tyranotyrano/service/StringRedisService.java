@@ -5,6 +5,7 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
 import com.tyranotyrano.rqrs.CreateStringCacheRq;
+import com.tyranotyrano.rqrs.CreateStringCacheWithExpirationRq;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,5 +23,10 @@ public class StringRedisService {
     public void create(CreateStringCacheRq rq) {
         ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
         valueOperations.set(rq.getKey(), rq.getValue());
+    }
+
+    public void createWithExpiration(CreateStringCacheWithExpirationRq rq) {
+        ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
+        valueOperations.set(rq.getKey(), rq.getValue(), rq.getTimeout(), rq.getTimeUnit());
     }
 }
