@@ -21,7 +21,7 @@ public class StringRedisController {
     private final StringRedisService redisService;
 
     @GetMapping(path = "/{key}")
-    public String readAll(@PathVariable(name = "key") String key) {
+    public String findByKey(@PathVariable(name = "key") String key) {
         return redisService.findByKey(key);
     }
 
