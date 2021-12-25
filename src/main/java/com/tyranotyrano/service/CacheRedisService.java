@@ -1,5 +1,6 @@
 package com.tyranotyrano.service;
 
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -24,5 +25,10 @@ public class CacheRedisService {
     public void create(CreateStringCacheRq rq) {
         ValueOperations<String, String> valueOperations = stringRedisTemplate.opsForValue();
         valueOperations.set(rq.getKey(), rq.getValue());
+    }
+
+    @CacheEvict(value = "fixed-key")
+    public void delete(String key) {
+        stringRedisTemplate.delete(key);
     }
 }
