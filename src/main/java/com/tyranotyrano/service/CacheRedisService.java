@@ -38,4 +38,9 @@ public class CacheRedisService {
     public Person findPerson(String name) {
         return PersonInMemoryRepository.getPerson(name);
     }
+
+    @CacheEvict(value = "person", key = "#name")
+    public void deletePerson(String name) {
+        // empty
+    }
 }

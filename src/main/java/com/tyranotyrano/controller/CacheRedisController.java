@@ -41,4 +41,9 @@ public class CacheRedisController {
         Person person = cacheRedisService.findPerson(name);
         return person.getName() + person.getAge();
     }
+
+    @DeleteMapping(path = "/person/{name}")
+    public void deletePerson(@PathVariable(name = "name") String name) {
+        cacheRedisService.deletePerson(name);
+    }
 }
