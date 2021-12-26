@@ -6,6 +6,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import com.tyranotyrano.domain.Person;
+import com.tyranotyrano.domain.PersonInMemoryRepository;
 import com.tyranotyrano.rqrs.CreateStringCacheRq;
 
 import lombok.RequiredArgsConstructor;
@@ -30,5 +32,10 @@ public class CacheRedisService {
     @CacheEvict(value = "fixed-key")
     public void delete(String key) {
         stringRedisTemplate.delete(key);
+    }
+
+    @Cacheable(value = "person", key = "#name")
+    public Person findPerson(String name) {
+        return PersonInMemoryRepository.getPerson(name);
     }
 }
