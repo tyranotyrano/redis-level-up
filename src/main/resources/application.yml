@@ -5,3 +5,7 @@ spring:
     port: 6379
     database: 0
     timeout: 7200
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
