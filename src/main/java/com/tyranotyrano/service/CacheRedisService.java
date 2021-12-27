@@ -33,14 +33,4 @@ public class CacheRedisService {
     public void delete(String key) {
         stringRedisTemplate.delete(key);
     }
-
-    @Cacheable(value = "person", key = "#name")
-    public Person findPerson(String name) {
-        return PersonInMemoryRepository.getPerson(name);
-    }
-
-    @CacheEvict(value = "person", key = "#name")
-    public void deletePerson(String name) {
-        // empty
-    }
 }
