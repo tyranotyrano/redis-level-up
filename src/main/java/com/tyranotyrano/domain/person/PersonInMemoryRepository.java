@@ -1,4 +1,4 @@
-package com.tyranotyrano.domain;
+package com.tyranotyrano.domain.person;
 
 import java.util.ArrayList;
 import java.util.List;

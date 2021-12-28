@@ -6,8 +6,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import com.tyranotyrano.domain.Person;
-import com.tyranotyrano.domain.PersonRepository;
+import com.tyranotyrano.domain.person.Person;
+import com.tyranotyrano.domain.person.PersonRepository;
 import com.tyranotyrano.rqrs.CreatePersonRq;
 
 import lombok.RequiredArgsConstructor;

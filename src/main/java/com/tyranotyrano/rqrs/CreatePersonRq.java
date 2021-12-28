@@ -1,6 +1,6 @@
 package com.tyranotyrano.rqrs;
 
-import com.tyranotyrano.domain.Person;
+import com.tyranotyrano.domain.person.Person;
 
 import lombok.Getter;
 

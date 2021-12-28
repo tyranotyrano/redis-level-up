@@ -1,4 +1,4 @@
-package com.tyranotyrano.domain;
+package com.tyranotyrano.domain.person;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

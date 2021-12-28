@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tyranotyrano.domain.Person;
+import com.tyranotyrano.domain.person.Person;
 import com.tyranotyrano.rqrs.CreatePersonRq;
 import com.tyranotyrano.service.PersonService;
 

@@ -6,8 +6,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
-import com.tyranotyrano.domain.Person;
-import com.tyranotyrano.domain.PersonInMemoryRepository;
 import com.tyranotyrano.rqrs.CreateStringCacheRq;
 
 import lombok.RequiredArgsConstructor;
