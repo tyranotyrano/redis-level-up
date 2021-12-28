@@ -1,5 +1,9 @@
 package com.tyranotyrano.service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
@@ -26,5 +30,13 @@ public class RankPersonService {
 
         ZSetOperations<String, RankPerson> zSetOperations = redisTemplate.opsForZSet();
         zSetOperations.add(RANK_KEY, rankPerson, rankPerson.getScore());
+    }
+
+    public List<RankPerson> findAll() {
+        List<RankPerson> rankPersons = new ArrayList<>();
+        ZSetOperations<String, RankPerson> zSetOperations = redisTemplate.opsForZSet();
+        rankPersons.addAll(zSetOperations.range(RANK_KEY, 0, 100));
+
+        return rankPersons;
     }
 }
