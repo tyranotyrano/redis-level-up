@@ -28,4 +28,14 @@ public class ObjectRedisController {
     public void create(@RequestBody CreateCacheRq rq) {
         objectRedisService.create(rq);
     }
+
+    @PostMapping(path = "/add")
+    public void add(@RequestBody CreateCacheRq rq) {
+        objectRedisService.add(rq);
+    }
+
+    @GetMapping(path = "/all/{key}")
+    public Object findAll(@PathVariable(name = "key") String key) {
+        return objectRedisService.findAll(key);
+    }
 }
