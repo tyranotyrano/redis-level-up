@@ -2,6 +2,7 @@ package com.tyranotyrano.service;
 
 import java.util.List;
 
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ObjectRedisService {
+    private static String HASH_KEY = "HASH_KEY";
 
     private final RedisTemplate<String, Object> redisTemplate;
 
@@ -35,5 +37,15 @@ public class ObjectRedisService {
     public List<Object> findAll(String key) {
         ListOperations<String, Object> listOperations = redisTemplate.opsForList();
         return listOperations.range(key, 0, listOperations.size(key));
+    }
+
+    public void addHash(CreateCacheRq rq) {
+        HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
+        hashOperations.put(rq.getKey(), HASH_KEY, rq.getValue());
+    }
+
+    public Object findAllHash(String key) {
+        HashOperations<String, Object, Object> hashOperations = redisTemplate.opsForHash();
+        return hashOperations.get(key, HASH_KEY);
     }
 }

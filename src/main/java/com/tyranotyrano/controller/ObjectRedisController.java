@@ -29,13 +29,23 @@ public class ObjectRedisController {
         objectRedisService.create(rq);
     }
 
-    @PostMapping(path = "/add")
+    @PostMapping(path = "/list/add")
     public void add(@RequestBody CreateCacheRq rq) {
         objectRedisService.add(rq);
     }
 
-    @GetMapping(path = "/all/{key}")
+    @GetMapping(path = "/list/{key}")
     public Object findAll(@PathVariable(name = "key") String key) {
         return objectRedisService.findAll(key);
+    }
+
+    @PostMapping(path = "/hash/add")
+    public void addHash(@RequestBody CreateCacheRq rq) {
+        objectRedisService.addHash(rq);
+    }
+
+    @GetMapping(path = "/hash/{key}")
+    public Object findAllHash(@PathVariable(name = "key") String key) {
+        return objectRedisService.findAllHash(key);
     }
 }
